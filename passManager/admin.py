@@ -51,9 +51,9 @@ class loginsFilter(SimpleListFilter):
 
 class passManagerAdmin(admin.ModelAdmin):
     class Media:
-        js = ("jquery-1.7.1.min.js", "jquery-ui-1.8.18.custom.min.js", "functions.js",)
+        js = ("js/jquery-1.7.1.min.js", "js/jquery-ui-1.8.18.custom.min.js", "js/functions.js",)
         css = {
-            "all": ("jquery-ui-1.8.18.custom.css",)
+            "all": ("css/jquery-ui-1.8.18.custom.css",)
         }
         
     list_per_page = 20
@@ -76,7 +76,7 @@ class passManagerAdmin(admin.ModelAdmin):
     def send_email_html(self, queryset):
         buttons = """                                                                                                                                                            
             <div style="width:20px">                                                                                                                                             
-            <a href="/send_pass/%s" title="Enviar por Email" name="Envio de Correo" class="mailwindow"><img src="/static/mail-message-new.png"></img></a>                       
+            <a href="/send_pass/%s" title="Enviar por Email" name="Envio de Correo" class="mailwindow"><img src="/static/images/mail-message-new.png"></img></a>                       
             </div>
         """ % (queryset.id)
         return buttons

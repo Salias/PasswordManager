@@ -1,10 +1,7 @@
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse
 from passManager.models import passDb, passEncr
 from django.shortcuts import render_to_response
 from django import forms
-from django.contrib.auth.models import User
-from django.forms import CharField
 from django.template import RequestContext
 from django.forms import TextInput, Textarea, PasswordInput, HiddenInput
 
