@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}
+PassManager
+{% endblock %}
+
+{% block branding %}
+<a href="{% url "admin:index" %}">
+  <img style="float:left; margin: -6px 4px 4px 4px"
+       src="/static/pwm_logo.png"/>
+</a>
+<h1 style="padding: 4px 0 0 70px;"
+    id="site-name">PassManager
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
