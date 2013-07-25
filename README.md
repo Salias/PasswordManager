@@ -1,8 +1,7 @@
-# NOTE
+## NOTE
 
 Adaptation to Django 1.5 and enhancement from [vmalaga/PasswordManager](http://github.com/vmalaga/PasswordManager) repository
 
-==================== 
 Password Manager 
 ====================
 

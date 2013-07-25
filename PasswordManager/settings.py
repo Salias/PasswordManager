@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     #APPS
     'passManager',
+    'users',
 )
 
 
