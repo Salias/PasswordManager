@@ -62,7 +62,6 @@ class passManagerAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     actions_on_top = False
     list_display = ('name','login','getClickMe','server','uploader','date','notes','send_email_html')
-    list_filter = (loginsFilter,'uploader','date')
     fieldsets = [
                  (None,         {'fields': ['name',('login','password'),'server','notes']}),
                  ]
@@ -73,6 +72,11 @@ class passManagerAdmin(admin.ModelAdmin):
         obj.uploader = request.user
         obj.nivel = 1
         obj.save()
+    
+    def get_list_filter(self, request):
+        if request.user.is_superuser or request.user.groups.filter(name='GrupoAdministrador').exists():
+            return (loginsFilter,'uploader','date')
+        return ('date',)
     
     def queryset(self, request):
         """Función que listará todas las contraseñas de todos los usuarios activos 

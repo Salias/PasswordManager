@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django import forms
 from django.template import RequestContext
 from django.forms import TextInput, Textarea, PasswordInput, HiddenInput
+from django.contrib.auth.decorators import login_required
 
 class ContactPassForm(forms.ModelForm):
     mailto = forms.EmailField(label='Destinatario')
@@ -22,7 +23,7 @@ class ContactPassForm(forms.ModelForm):
 def mailsent(request):
     return render_to_response('mailsent.html', context_instance=RequestContext(request))
 
-
+@login_required
 def sendPassEmailView(request, rowid):
     from django.core.mail import EmailMultiAlternatives
     if request.method == 'POST':
