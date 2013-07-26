@@ -1,7 +1,3 @@
-## NOTE
-
-Adaptation to Django 1.5 and enhancement from [vmalaga/PasswordManager](http://github.com/vmalaga/PasswordManager) repository
-
 Password Manager 
 ====================
 
@@ -63,3 +59,6 @@ for production enviroments with apache or other webserver remember collectstatic
 ~~~
 $ ./manage.py collectstatic
 ~~~
+
+#### NOTE
+Adaptation to Django 1.5 and enhancement from [vmalaga/PasswordManager](http://github.com/vmalaga/PasswordManager) repository

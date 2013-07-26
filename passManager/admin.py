@@ -75,12 +75,22 @@ class passManagerAdmin(admin.ModelAdmin):
         obj.save()
     
     def queryset(self, request):
-        """Función que listará todas las contraseñas en el caso de que el usuario tengo el rol
-        de Administrador y sólo las suyas en caso de que sea un usuario"""
+        """Función que listará todas las contraseñas de todos los usuarios activos 
+        en el caso de que el usuario tengo el rol de Administrador y sólo las suyas en caso de que sea un usuario.
+        """
+        set = passDb.objects.none()
         qs = super(passManagerAdmin, self).queryset(request)
         if  request.user.is_superuser or request.user.groups.filter(name='GrupoAdministrador').exists():
-            return qs
-        return qs.filter(uploader=request.user)    
+            set = qs
+        else:
+            set = qs.filter(uploader=request.user)
+    
+        excludes = []
+        for q in set:
+            if not q.uploader.is_active: 
+                excludes.append(q.id)
+        print excludes
+        return set.exclude(id__in=excludes)
     
     def send_email_html(self, queryset):
         buttons = """                                                                                                                                                            
