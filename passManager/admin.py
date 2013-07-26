@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from passManager.models import passDb, passEncr
 from django.contrib.admin import SimpleListFilter
@@ -72,6 +73,14 @@ class passManagerAdmin(admin.ModelAdmin):
         obj.uploader = request.user
         obj.nivel = 1
         obj.save()
+    
+    def queryset(self, request):
+        """Función que listará todas las contraseñas en el caso de que el usuario tengo el rol
+        de Administrador y sólo las suyas en caso de que sea un usuario"""
+        qs = super(passManagerAdmin, self).queryset(request)
+        if  request.user.is_superuser or request.user.groups.filter(name='GrupoAdministrador').exists():
+            return qs
+        return qs.filter(uploader=request.user)    
     
     def send_email_html(self, queryset):
         buttons = """                                                                                                                                                            

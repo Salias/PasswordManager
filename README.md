@@ -23,6 +23,7 @@ like send the required password the any email address
  * Password is only viewed if you click on the password field, if not, it is hidden
  * passwords are encripted on the database based on django.core.signing
  * filters on right size django bar, date, uploader and TOP LOGINS with facets for logins with at least 3 logins
+ * User and Admin roles.
  
 ## REQUIREMENTS:
  * Django 1.5
@@ -42,27 +43,14 @@ mysql> grant all privileges on passmanager.* to passmanager@localhost identified
 
 See [django docs](https://docs.djangoproject.com/en/dev/ref/databases/) form more details.
 
+
+After that you need yo synchronize database.
+
 ~~~
 $ ./manage.py syncdb
-Creating tables ...
-Creating table auth_permission
-Creating table auth_group_permissions
-Creating table auth_group
-Creating table auth_user_user_permissions
-Creating table auth_user_groups
-Creating table auth_user
-Creating table django_content_type
-Creating table django_session
-Creating table django_admin_log
-Creating table passManager_passdb
-
-You just installed Django's auth system, which means you don't have any superusers defined.
-Would you like to create one now? (yes/no): yes
-Username (leave blank to use 'vmalaga'): 
-E-mail address: vmalaga
-Password: 
-Password (again): 
-Superuser created successfully.
+.
+.
+.
 Installing custom SQL ...
 Installing indexes ...
 Installed 0 object(s) from 0 fixture(s)
